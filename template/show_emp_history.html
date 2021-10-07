@@ -1,0 +1,141 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div class="row">
+	<div class="col-md-12">
+		<h5>HISTORY OF CHANGES FOR THE EMPLOYEE : {{emp_uncons.name1}}  {{emp_uncons.surname}},  PESEL :  {{emp_uncons.id_employee.pesel}} </h5>
+		<form action="" method="POST">
+			{% csrf_token %}
+			<input class="btn btn-sm btn-danger" type="submit" name="Return" value='Return'>
+		</form>
+		<hr>
+		<div class="card card-body mb-5">
+			<table class="table table-sm">
+				<h5>BASIC INFORMATION</h5>
+				{% if emp_uncons_arc %}
+					<tr>
+						<th>No.</th>
+						<th>From</th>
+						<th>To</th>
+						<th>First name</th>
+						<th>Middle name</th>
+						<th>Surname</th>
+						<th>Gender</th>
+						<th>Documentation</th>
+						<th>No.documentation </th>
+						<th>Nationality</th>
+					</tr>
+
+					{% for i in emp_uncons_arc %}
+						<tr>
+							<td>{{forloop.counter}}.</td>
+							<td>{{i.date_of_entry}}</td>
+							<td>{{i.date_of_exit}}</td>
+							<td>{{i.name1}}</td>
+							<td>{{i.name2}}</td>
+							<td>{{i.surname}}</td>
+							<td>{{i.gender}}</td>
+							<td>{{i.doc}}</td>
+							<td>{{i.nr_doc}}</td>
+							<td>{{i.nationality}}</td>
+						</tr>
+
+					{% endfor %}
+
+				{% else %}
+					<p>There was no changes for this employee</p>	
+
+				{% endif %}
+			</table>
+		</div>
+
+		<div class="card card-body mb-5">
+			<table class="table table-sm">
+				<h5>ADDRESS</h5>
+				{% if emp_address %}
+					<tr>
+						<th>No.</th>
+						<th>From</th>
+						<th>To</th>
+						<th>Adress type</th>
+						<th>Voivodeship</th>
+						<th>District</th>
+						<th>Commune</th>
+						<th>City</th>
+						<th>Street</th>
+						<th>NO</th>
+						<th>Post</th>
+						<th>Status</th>
+					</tr>
+
+					{% for i in emp_address %}
+						<tr>
+							<td>{{forloop.counter}}.</td>
+							<td>{{i.date_of_entry}}</td>
+							<td>{{i.date_of_exit}}</td>
+							<td>{{i.type_address}}</td>
+							<td>{{i.voivodeship}}</td>
+							<td>{{i.district}}</td>
+							<td>{{i.commune}}</td>
+							<td>{{i.city}}</td>
+							<td>{{i.street}}</td>
+
+							{% if i.apartment_no %}
+								<td>{{i.building_no}}/ {{i.apartment_no}}</td>
+							{% else %}
+								<td>{{i.building_no}}</td>
+							{% endif %}
+
+							<td>{{i.post_code}}, {{i.post}}</td>
+							<td>{{i.type_of_change}}</td>
+						</tr>			
+
+					{% endfor %}
+
+				{% else %}
+					<p>There was no changes for this employee</p>	
+
+				{% endif %}
+
+			</table>
+		</div>
+
+
+		<div class="card card-body">
+			<table class="table table-sm">
+				<h5>PROFESSION</h5>
+				{% if emp_profession %}
+					<tr>
+						<th>No.</th>
+						<th>From</th>
+						<th>To</th>
+						<th>Code</th>
+						<th>Name of profession</th>
+						<th>Working hours</th>
+						<th>Status</th>
+					</tr>
+
+					{% for i in emp_profession %}
+						<tr>
+							<td>{{forloop.counter}}.</td>
+							<td>{{i.date_of_entry}}</td>
+							<td>{{i.date_of_exit}}</td>
+							<td>{{i.code}}</td>
+							<td>{{i.name_of_proffession}}</td>
+							<td>{{i.working_hours}}</td>
+							<td>{{i.type_of_change}}</td>
+						</tr>			
+
+					{% endfor %}
+				{% else %}
+					<p>There was no changes for this employee</p>	
+
+				{% endif %}
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+

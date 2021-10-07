@@ -1,0 +1,37 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+<div class="row">
+
+	<div class="col-md-4">
+		<div class="card card-body">
+			<h5>Informacje ogólne - {{emp_additional.name1 }} {{emp_additional.surname }}</h5>
+			<h5>PESEL: {{adr_show.id_employee.pesel}}</h5>
+			<hr>
+			<p>Voivodeship: {{adr_show.voivodeship}}</p>
+			<p>District: {{adr_show.district}}</p>
+			<p>Commune: {{adr_show.commune}}</p>
+			<p>City: {{adr_show.city}}</p>
+			<p>Street: {{adr_show.street}}</p>
+			<p>Building No: {{adr_show.building_no}}</p>
+			<p>Apartment No: {{adr_show.apartment_no}}</p>
+			<p>Post code: {{adr_show.post_code}}</p>
+			<p>Post: {{adr_show.post}}</p>
+
+			<form action="" method="POST">
+				{% csrf_token %}
+				<input class="btn btn-danger" type="submit" name='Return' value='Return'>
+			</form>
+
+		</div>
+	</div>	
+
+</div>
+
+
+
+{% endblock %}
+
+

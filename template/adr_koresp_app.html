@@ -1,0 +1,115 @@
+{% extends 'main.html' %}
+
+
+{% load static %}
+
+
+{% block content %}
+
+<div class="row">
+	<div class="col-md-9">
+		<div class="card card-body">
+
+			<h1>Adres zamieszkania</h1>
+
+			<form action="" method="POST">
+				{% csrf_token %}
+
+				  <div class="form-row">
+
+				    <div class="form-group col-md-4">
+				      <label for="inputEmail4">Pracownik</label>
+				      <div class="input-group mb-3">
+				      	{{adr_zam.id_pracownika}}
+				      </div>
+				    </div>
+
+				  </div>
+
+
+				  <div class="form-row">
+
+				    <div class="form-group col-md-4">
+				      <label for="inputEmail4">Województwo</label>
+				      <div class="input-group mb-3">
+				      	{{pracownik_adr_zamieszkania.woj}}
+				      </div>
+				    </div>
+
+				    <div class="form-group col-md-4">
+				      <label for="inputPassword4">Powiat</label>
+				      <div class="input-group mb-3">
+				      	{{pracownik_adr_zamieszkania.powiat}}
+				      </div>
+				    </div>
+
+				    <div class="form-group col-md-4">
+				      <label for="inputEmail4">Gmina</label>
+				      <div class="input-group mb-3">
+				      	{{pracownik_adr_zamieszkania.gmina}}
+				      </div>
+				    </div>
+
+				  </div>
+
+
+				  <div class="form-row">
+
+				    <div class="form-group col-md-4">
+				      <label for="inputEmail4">Miejscowość</label>
+				      <div class="input-group mb-3">
+				      	{{pracownik_adr_zamieszkania.miejscowosc}}
+				      </div>
+				    </div>
+
+				    <div class="form-group col-md-4">
+				      <label for="inputPassword4">Ulica</label>
+				      <div class="input-group mb-3">
+				      	{{pracownik_adr_zamieszkania.ulica}}
+				      </div>
+				    </div>
+
+				    <div class="form-group col-md-2">
+				      <label for="inputPassword4">NR budynku</label>
+				      <div class="input-group mb-3">
+				      	{{pracownik_adr_zamieszkania.nr_budynku}}
+				      </div>
+				    </div>
+
+				    <div class="form-group col-md-2">
+				      <label for="inputPassword4">NR Lokalu</label>
+				      <div class="input-group mb-3">
+				      	{{pracownik_adr_zamieszkania.nr_lokal}}
+				      </div>
+				    </div>
+
+				  </div>
+
+
+				  <div class="form-row">
+
+				    <div class="form-group col-md-3">
+				      <label for="inputEmail4">Poczta</label>
+				      <div class="input-group mb-3">
+				      	{{pracownik_adr_zamieszkania.poczta}}
+				      </div>
+				    </div>
+
+				    <div class="form-group col-md-2">
+				      <label for="inputPassword4">Kod pocztowy</label>
+				      <div class="input-group mb-3">
+				      	{{pracownik_adr_zamieszkania.kod_pocztowy}}
+				      </div>
+				    </div>
+
+				  </div>
+
+			<input class="btn btn-outline-secondary" type="submit" name="Submit" value="Zapisz">
+
+			</form>
+
+		</div>
+	</div>
+</div>
+
+{% endblock %}

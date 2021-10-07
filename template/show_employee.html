@@ -1,0 +1,111 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+<div class="row">
+
+	<div class="col-md-3">
+		<div class="card card-body">
+			<h5>General information</h5>
+			<hr>
+			<p>First name: {{emp_show.name1}}</p>
+			<p>Middle name : {{emp_show.name2}}</p>
+			<p>Surname: {{emp_show.surname}}</p>
+			<p>Pesel: {{emp_show.id_employee.pesel}}</p>
+			<p>Date of birth: {{emp_show.id_employee.date_of_birth}}</p>
+			<p>Place of birth: {{emp_show.id_employee.place_of_birth}}</p>
+			<p>Father's name: {{emp_show.id_employee.fathers_name}}</p>
+			<p>Mother's name: {{emp_show.id_employee.mothers_name}}</p>
+			<p>Nationality: {{emp_show.nationality}}</p>
+			<a class="btn btn-sm btn-success mb-2" href="{% url 'edit_general_inf' pk %}">Edit</a>
+			<a class="btn btn-sm btn-warning mb-2" href="{% url 'show_emp_history' pk %}">History</a>
+		</div>
+	</div>	
+
+	<div class="col-md-8">
+		<div class="card card-body mb-5">
+			<div>
+				<h5>Address</h5>
+				<a class="btn btn-sm btn-dark mb-2" href="address">Add</a>
+			</div>
+			
+			<table class="table table-sm">
+				{% if emp_address %}
+				<tr>
+					<th>No.</th>
+					<th>Type</th>
+					<th>Address</th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+
+				{% for i in emp_address %}
+					<tr>
+						<td>{{forloop.counter}}.</td>
+						<td>{{i.type_address}}</td>
+						{% if i.apartment_no %}
+							<td>{{i.city}}, {{i.street}} {{i.building_no}}/{{i.apartment_no}}, {{i.post_code}} {{i.post}} </td>
+						{% else %}
+							<td>{{i.city}}, {{i.street}} {{i.building_no}}, {{i.post_code}} {{i.post}} </td>
+						{% endif %}
+						<td><a class="btn btn-sm btn-primary" href="{% url 'show_adr' pk i.id %}">Show</a></td>
+						<td><a class="btn btn-sm btn-success" href="{% url 'edit_adr' pk i.id %}">Edit</a></td>
+						<td><a class="btn btn-sm btn-danger" href="{% url 'del_adr' pk i.id %}">Delete</a></td>
+
+					</tr>		
+
+				{% endfor %}
+
+
+				{% else %}
+					<p>No address available for employee</p>	
+				{% endif %}
+
+			</table>
+
+		</div>
+
+		<div class="card card-body">
+			<div>
+				<h5>Profesion</h5>
+				<a class="btn btn-sm btn-dark mb-2" href="{% url 'add_profession' pk %}">Add</a>				
+			</div>
+
+			
+			<table class="table table-sm">
+				{% if emp_profesion %}
+					<tr>
+						<th>No.</th>
+						<th>Code</th>
+						<th>Profesion</th>
+						<th>Working hours</th>
+						<th></th>
+						<th></th>
+						<th></th>
+					</tr>
+
+					{% for i in emp_profesion %}
+						<tr>
+							<td>{{forloop.counter}}.</td>
+							<td>{{i.code}}</td>
+							<td>{{i.name_of_proffession}}</td>
+							<td>{{i.working_hours}}</td>
+							<td><a class="btn btn-sm btn-success" href="{% url 'edit_profession' pk i.id %}">Edit</a></td>
+							<td><a class="btn btn-sm btn-danger" href="{% url 'profession_del' pk i.id %}">Delete</a></td>
+
+						</tr>		
+
+					{% endfor %}
+
+				{% else %}
+					<p>No profesion available for employee</p>	
+				{% endif %}
+
+			</table>
+
+		</div>
+	</div>	
+
+{% endblock %}

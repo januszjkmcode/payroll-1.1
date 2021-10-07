@@ -1,0 +1,102 @@
+{% extends 'main.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<style>
+
+	.alert ul {
+		color: red;
+		margin: -1rem;
+		margin-top: -0.5rem;
+		padding: 0rem;
+		font-size: 0.85rem;
+		list-style: none;	}
+
+
+</style>
+
+<div class="row">
+		<div class="col-md-9">
+			<div class="card card-body">
+				<h3>Editing</h3>
+
+				<form action="" method="POST">
+				  {% csrf_token %}
+				  <div class="form-row">
+
+				    <div class="form-group col-md-4">
+				      <label for="inputEmail4">First name</label>
+				      <div>
+					      <div class="input-group mb-0">
+					      	{{emp_var_uncon_form.name1}}				      	
+					      </div>
+				      </div>
+				    </div>
+
+				    <div class="form-group col-md-4">
+				      <label for="inputPassword4">Middle name</label>
+				      <div class="input-group mb-3">
+				      	{{emp_var_uncon_form.name2}}
+				      </div>
+				    </div>
+
+				    <div class="form-group col-md-4">
+				      <label for="inputEmail4">Surname</label>
+				      <div class="input-group mb-3">
+				      	{{emp_var_uncon_form.surname}}
+				      </div>
+				    </div>
+
+				  </div>
+
+				  <div class="form-row">
+
+				    <div class="form-group col-md-4">
+				      <label for="inputEmail4">Gender</label>
+				      <div class="input-group mb-3">
+				      	{{emp_var_uncon_form.gender}}
+				      </div>
+				    </div>
+
+				    <div class="form-group col-md-4">
+				      <label for="inputEmail4">Documentation</label>
+				      <div class="input-group mb-3">
+				      	{{emp_var_uncon_form.doc}}
+				      </div>
+				    </div>
+
+				    <div class="form-group col-md-4">
+				      <label for="inputEmail4">No.Documentation</label>
+				      <div class="input-group mb-3">
+				      	{{emp_var_uncon_form.nr_doc}}
+				      </div>
+				    </div>
+
+				  </div>
+
+
+				  <div class="form-row">
+
+				    <div class="form-group col-md-4">
+				      <label for="inputPassword4">Nationality</label>
+				      <div class="input-group mb-3">
+				      	{{emp_var_uncon_form.nationality}}
+				      </div>
+				    </div>
+
+				  </div>
+
+
+				  <input class="btn btn-sm btn-success" type="submit" name="Save change" value='Save change'>
+				  <input class="btn btn-sm btn-danger" type="submit" name="Return" value='Return'>
+				</form>
+
+
+			</div>
+		</div>
+	
+</div>
+
+{% endblock %}

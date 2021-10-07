@@ -1,0 +1,76 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+<br>
+
+<div class="row">
+	<div class="col-md-5">
+		<h5>LIST OF EMPLOYEES</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-dark  btn-sm btn-block" href="{% url 'creator_wizard' %}">Add employee</a>
+			<table class="table table-sm">
+				<tr>
+					<th></th>
+					<th>Name</th>
+					<th>Surname</th>
+					<th>Pesel</th>
+					<th></th>
+				</tr>
+
+				{% for i in employee_uncon_var %}
+					<tr>
+						<td><a class="btn btn-sm btn-primary" href="{% url 'emp_show' i.id_employee.id %}">Show</a></td>
+						<td>{{i.name1}}</td>
+						<td>{{i.surname}}</td>
+						<td>{{i.id_employee.pesel}}</td>
+						<td><a class="btn btn-sm btn-danger" href="{% url 'del_emp' i.id_employee.id %}">Delete</a></td>
+					</tr>				
+
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+	<div class="col-md-7">
+		<h5>SHORT DESCRIPTION OF THE APPLICATION</h5>
+		<hr>
+		<div class="card card-body">
+			<p>
+				The login system includes functions such as:
+				<p>- logging into the application</p>
+				<p>- registration,</p>
+				<p>- changing the password using the mailbox,</p>
+			</p>
+			<p>Application using relationship OneToOne and ManyToOne in database. </p>
+			<p>
+				A application was designed to allow the definition of an employee using SessionWizardView
+				and editing, showing and deleting data. 
+				Application also collecting arhivate data and show history change.
+			</p>	
+			<p>
+				Structure of data designed based on polish standard.
+				For example PESEL (is polish identifier number includes 11 digits), post code in format 11-111. 
+			</p>
+			<p>
+				The sample validation for the pesel number and for the postal code was used in the project.
+				PESEL number is validated based on date of birth (contains only didgits and has 11 characters).
+				The system allows the employee to be entered without a PESEL number.  
+			</p>
+			<p>List of profession is not translated to english. </p>
+		</div>
+	</div>	
+</div>
+<hr>
+<footer>
+	<h6>Payroll v.1.0 - copyright by jkmcode sp. z o.o. - www: jkmcode.eu, e-mail: biuro@jkmcode.eu</h6>
+</footer>
+{% endblock %}
+
+
+
+
+
+

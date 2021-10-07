@@ -1,0 +1,82 @@
+{% extends 'main.html' %}
+
+
+
+{% block content %}
+
+<div class="row">
+	<div class="col-md-9">
+		<div class="card card-body">
+
+			<h4>{{emp_var_uncon.name1}} {{emp_var_uncon.surname}} - Pesel: {{emp_var_uncon.id_employee.pesel}}</h4>
+
+			{% if edit_profesion %}
+				<h6>Code of profession: {{edit_profesion.code}}</h6>
+				<h6>Name of proffesion: {{edit_profesion.name_of_proffession}}</h6>
+				<h6>Working hours: {{edit_profesion.working_hours}}</h6>
+				<hr>
+			{% endif %} 
+			
+			<form action="" method="POST">
+				{% csrf_token %}
+
+				  <div class="form-row">
+
+				    <div class="form-group col-md-4.5">
+				      <label> Polish name of profession - Code</label>
+				      <div class="input-group mb-3">
+				      	{{profesion_form.professions}}
+				      </div>
+				    </div>
+
+				    <div class="form-group col-md-4.5">
+				      <label for="inputPassword4">Working hours</label>
+				      <div class="input-group mb-3">
+				      	{{profesion_form.working_hours}}
+				      </div>
+				    </div>
+
+				  </div>
+
+				{% if edit_profesion %}
+					<input class="btn btn-outline-secondary mb-3" type="submit" name="Edit" value="Save">
+					<input class="btn btn-outline-danger mb-3" type="submit" name="Return" value="Return">
+				{% else %}
+					<input class="btn btn-outline-secondary mb-3" type="submit" name="Save" value="Save">
+					<input class="btn btn-outline-danger mb-3" type="submit" name="Return" value="Return">
+				{% endif %}
+
+			</form>
+
+			 <form method="get"> 
+				{{filter_list_of_profession.form}}  
+
+		    	<button class="btn btn-primary" type="submit">Search</button>
+		  	</form>
+
+			<table class="table table-sm">
+				<h5>List of proffesions</h5>
+				<tr>
+					<th>No.</th>
+					<th>Code</th>
+					<th>Name of profesion</th>
+				</tr>
+
+				{% for i in list_of_prof %}
+					<tr>
+						<td>{{forloop.counter}}.</td>
+						<td>{{i.code}}</td>
+						<td>{{i.name_of_proffession}}</td>
+					</tr>		
+
+				{% endfor %}
+
+			</table>
+
+		</div>
+	</div>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends 'main.html' %}
+
+
+
+{% block content %}
+
+<div class="row">
+	<div class="col-md-9">
+		<div class="card card-body">
+
+			<h1>Employee's address</h1>
+
+			<form action="" method="POST">
+				{% csrf_token %}
+
+
+				  <div class="form-row">
+
+				    <div class="form-group col-md-4">
+				      <label for="inputEmail4">Adress type</label>
+				      <div class="input-group mb-3">
+				      	{{address_add.type_address}}
+				      </div>
+				    </div>
+
+				  </div>
+
+
+				  <div class="form-row">
+
+				    <div class="form-group col-md-4">
+				      <label for="inputEmail4">Voivodeship</label>
+				      <div class="input-group mb-3">
+				      	{{address_add.voivodeship}}
+				      </div>
+				    </div>
+
+				    <div class="form-group col-md-4">
+				      <label for="inputPassword4">District</label>
+				      <div class="input-group mb-3">
+				      	{{address_add.district}}
+				      </div>
+				    </div>
+
+				    <div class="form-group col-md-4">
+				      <label for="inputEmail4">Commune</label>
+				      <div class="input-group mb-3">
+				      	{{address_add.commune}}
+				      </div>
+				    </div>
+
+				  </div>
+
+
+				  <div class="form-row">
+
+				    <div class="form-group col-md-4">
+				      <label for="inputEmail4">City</label>
+				      <div class="input-group mb-3">
+				      	{{address_add.city}}
+				      </div>
+				    </div>
+
+				    <div class="form-group col-md-4">
+				      <label for="inputPassword4">Street</label>
+				      <div class="input-group mb-3">
+				      	{{address_add.street}}
+				      </div>
+				    </div>
+
+				    <div class="form-group col-md-2">
+				      <label for="inputPassword4">Building No.</label>
+				      <div class="input-group mb-3">
+				      	{{address_add.building_no}}
+				      </div>
+				    </div>
+
+				    <div class="form-group col-md-2">
+				      <label for="inputPassword4">Apartment No.</label>
+				      <div class="input-group mb-3">
+				      	{{address_add.apartment_no}}
+				      </div>
+				    </div>
+
+				  </div>
+
+
+				  <div class="form-row">
+
+				    <div class="form-group col-md-3">
+				      <label for="inputEmail4">Post</label>
+				      <div class="input-group mb-3">
+				      	{{address_add.post}}
+				      </div>
+				    </div>
+
+				    <div class="form-group col-md-2">
+				      <label for="inputPassword4">Post code</label>
+				      <div class="input-group mb-3">
+				      	{{address_add.post_code}}
+						{{address_add.errors.post_code}}
+				      </div>
+			
+				    </div>
+
+				  </div>
+
+				<input class="btn btn-sm btn-success" type="submit" name="Submit" value="Save">
+
+			</form>
+
+		</div>
+	</div>
+</div>
+
+{% endblock %}

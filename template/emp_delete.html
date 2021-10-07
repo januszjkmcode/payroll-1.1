@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<br>
+<div class="row">
+	<div class="col-md-6">
+		<div class="card card-body">
+			<p>Are you sure you want to delete employee {{emp_var_unconst.name1}} {{emp_var_unconst.surname}}?</p>
+			<p>Pesel: {{emp_var_unconst.id_employee.pesel}}</p>
+			<form action="" method="POST">
+				{% csrf_token %}
+				<input class="btn btn-warning" type="submit" name= 'No' value='No'>
+				<input class="btn btn-danger" type="submit" name= 'Yes' value='Yes'>
+			</form>
+
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}
